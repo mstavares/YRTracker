@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_historico"
+        android:title="@string/action_historico">
+    </item>
+    <item
+        android:id="@+id/action_definicoes"
+        android:title="@string/action_definicoes">
+    </item>
+
+</menu>

@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Manifest -->
+    <string name="app_name">YRTrack</string>
+    <string name="title_activity_maps">YRTrack</string>
+
+    <!-- activity_detalhes_ponto.xml -->
+    <string name="data">Data: </string>
+    <string name="latitude">Latitude: </string>
+    <string name="longitude">Latitude: </string>
+
+    <!-- trajeto_fragment.xml -->
+    <string name="distancia_percorrida">Distancia Percorrida: </string>
+    <string name="velocidade_max">Velocidade Max: </string>
+    <string name="velocidade_media">Velocidade Media: </string>
+    <string name="duracao">Duração: </string>
+
+    <!-- >>>>>Classes<<<<< -->
+
+    <!-- ActionBar -->
+    <string name="action_definicoes">Definições</string>
+    <string name="action_historico">Historico</string>
+
+    <!-- Bateria -->
+    <string name="mensagem_bateria_fraca">A bateria está abaixo de 20%. Quer ativar o modo de economia?</string>
+    <string name="mensagem_confirma_modo_economia">O modo de economia está agora ativo.</string>
+
+    <!-- MapsActivity -->
+    <string name="encerrar_aplicacao">Quer encerrar a aplicação?</string>
+    <string name="encerrar_percurso">Pretende encerrar o percurso atual?</string>
+    <string name="iniciar_percurso">Pretende dar uma descrição ao percurso?</string>
+    <string name="descricao_percurso">Introduza a descrição para o seu percurso.</string>
+    <string name="erro_criar_pasta_aplicacao">Ocorreu um erro ao criar a pasta da aplicação.</string>
+    <string name="nao_ha_historico">Ainda não há percursos registados.</string>
+    <string name="percurso_sem_descricao">Percurso sem descricao</string>
+    <string name="erro_criar_pasta_fotografias">Ocorreu um erro ao criar a pasta para o armazenamento das fotografias.</string>
+    <string name="aguardar_sinal_gps">A aguardar sinal GPS.</string>
+    <string name="ok">Ok</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="voce_esta_aqui">Você está aqui.</string>
+    <string name="posicao_encontrada">A sua posição foi encontrada.</string>
+    <string name="gps_ativado">O GPS foi inicializado.</string>
+    <string name="gps_desativado">O GPS foi desativo.</string>
+    <string name="gps_desativo">Para utilizar a aplicação tem de ativar o GPS. Pretende ativa-lo?</string>
+    <string name="fotografia_guardada_com_sucesso">A fotografia foi guardada com sucesso.</string>
+    <string name="erro_ao_guardar_a_fotografia">Ocorreu um erro ao guardar a fotografia.</string>
+
+    <!-- PercursoFragment -->
+    <string name="partida">Partida</string>
+    <string name="chegada">Chegada</string>
+    <string name="a_carregar_percurso">A carregar...</string>
+    <string name="eliminar_percurso">Pretende eliminar este percurso?</string>
+    <string name="percurso_eliminado">O percurso foi eliminado com sucesso.</string>
+    <string name="percurso_nao_eliminado">Não foi possivel eliminar o percurso selecionado.</string>
+
+    <!-- Utils -->
+    <string name="sim">Sim</string>
+    <string name="nao">Nao</string>
+
+</resources>

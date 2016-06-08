@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/custom_marker" />
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="5dp" />
+
+</RelativeLayout>
