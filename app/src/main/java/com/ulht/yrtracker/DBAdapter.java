@@ -146,6 +146,19 @@ public class DBAdapter {
                 null);
     }
 
+    public Cursor getPercurso(Integer idPercurso) throws SQLException
+    {
+        return db.query(
+                "percurso",
+                null,
+                " _id=?",
+                new String[] {idPercurso.toString()},
+                null,
+                null,
+                null,
+                null);
+    }
+
     public Cursor getFoto(Long data) throws SQLException
     {
         return db.query(
@@ -153,18 +166,6 @@ public class DBAdapter {
                 null,
                 " data=?",
                 new String[] {data.toString()},
-                null,
-                null,
-                null,
-                null);
-    }
-
-    public Cursor getTodasAsFotos() throws SQLException {
-        return db.query(true,
-                "foto",
-                null,
-                null,
-                null,
                 null,
                 null,
                 null,

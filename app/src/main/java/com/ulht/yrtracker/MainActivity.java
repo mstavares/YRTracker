@@ -1,6 +1,7 @@
 package com.ulht.yrtracker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,8 +31,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_historico:
                 Cursor mCursor = MapsActivity.acessoBD().getTodosOsPercursos();
                 if(mCursor.moveToFirst()) {
-                    startActivity(new Intent(this, HistoricoActivity.class));
-                    finish();
+                    SharedPreferences mSharedPreferences = getSharedPreferences(Utils.DEFINICOES, MODE_PRIVATE);
+                    if(mSharedPreferences.getBoolean(DefinicoesActivity.APRESENTACAO, false)) {
+                        startActivity(new Intent(this, ListaDePercursosActivity.class));
+                        finish();
+                    } else {
+                        Intent mIntent = new Intent(this, HistoricoActivity.class);
+                        mIntent.putExtra("id", -1);
+                        startActivity(mIntent);
+                        finish();
+                    }
                 } else {
                     Toast.makeText(this, R.string.nao_ha_historico, Toast.LENGTH_LONG).show();
                 }

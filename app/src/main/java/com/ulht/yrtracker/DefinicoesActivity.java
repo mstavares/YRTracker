@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
 
 public class DefinicoesActivity extends MainActivity {
@@ -12,9 +13,9 @@ public class DefinicoesActivity extends MainActivity {
     private static final int INTERVALO_ATUALIZACAO_ECO = 5 * 1000;
     public static final int DISTANCIA_ATUALIZACAO_DEFAULT = 3;
     private static final int DISTANCIA_ATUALIZACAO_ECO = 5;
-    private static final String[] OPCOES = {"Modo Economia"};
     public static final String TEMPO = "tempo";
     public static final String DISTANCIA = "distancia";
+    public static final String APRESENTACAO = "apresentacao";
     private Bateria mBateria;
 
     private CheckBox mCheckBoxEconomia, mCheckBoxPagina;
@@ -32,12 +33,13 @@ public class DefinicoesActivity extends MainActivity {
 
         mCheckBoxEconomia.setChecked(Bateria.isModoEconomia());
 
+        lerDefinicoesEmCache();
+
 
     }
 
     @Override
     public void onBackPressed() {
-
         startActivity(new Intent(this, MapsActivity.class));
         finish();
     }
@@ -45,6 +47,7 @@ public class DefinicoesActivity extends MainActivity {
     @Override
     public void onDestroy() {
         mBateria.modoEconomia(mCheckBoxEconomia.isChecked());
+        guardaApresentacaoEmCache(mCheckBoxPagina.isChecked());
         mBateria.encerraBateria();
         super.onDestroy();
     }
@@ -60,6 +63,18 @@ public class DefinicoesActivity extends MainActivity {
             mEditor.putInt(TEMPO, INTERVALO_ATUALIZACAO_DEFAULT);
         }
         mEditor.apply();
+    }
+
+    private void guardaApresentacaoEmCache(boolean modoDeApresentacaoPagina){
+        SharedPreferences mSharedPreferences = getSharedPreferences(Utils.DEFINICOES, MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+        mEditor.putBoolean(APRESENTACAO, modoDeApresentacaoPagina);
+        mEditor.apply();
+    }
+
+    private void lerDefinicoesEmCache() {
+        SharedPreferences mSharedPreferences = getSharedPreferences(Utils.DEFINICOES, MODE_PRIVATE);
+        mCheckBoxPagina.setChecked(mSharedPreferences.getBoolean(APRESENTACAO, false));
     }
 
 }

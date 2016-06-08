@@ -15,11 +15,17 @@ public class HistoricoActivity extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico);
 
+        int id = getIntent().getExtras().getInt("id");
+
         mBateria = new Bateria(this);
         mBateria.registaBateria();
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager()));
+        if(id != -1) {
+            viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager(), id));
+        } else {
+            viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager()));
+        }
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabsStrip.setViewPager(viewPager);
