@@ -130,12 +130,10 @@ public class PercursoFragment extends Fragment {
             @Override
             protected void onPostExecute(Void params) {
 
-
                 for(Map.Entry<Integer, String> entry : posicoesComFoto.entrySet()) {
                     Uri link = Uri.parse(entry.getValue());
                     Utils.criaMarkerPersonalizado(getContext(), mMap, pontosDoTrajeto.get(entry.getKey()), link);
                 }
-
 
                 int mUtitimoElemento = pontosDoTrajeto.size() - 1;
 

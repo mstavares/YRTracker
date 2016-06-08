@@ -194,7 +194,6 @@ public class Utils {
                         target.metodoPositivo(dialog, id);
                     }
                 })
-
                 .setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {

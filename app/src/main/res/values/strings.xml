@@ -1,8 +1,8 @@
 <resources>
 
     <!-- Manifest -->
-    <string name="app_name">YRTrack</string>
-    <string name="title_activity_maps">YRTrack</string>
+    <string name="app_name">YRTracker</string>
+    <string name="title_activity_maps">YRTracker</string>
 
     <!-- activity_detalhes_ponto.xml -->
     <string name="data">Data: </string>
@@ -24,6 +24,10 @@
     <!-- Bateria -->
     <string name="mensagem_bateria_fraca">A bateria está abaixo de 20%. Quer ativar o modo de economia?</string>
     <string name="mensagem_confirma_modo_economia">O modo de economia está agora ativo.</string>
+
+    <!-- ActionBar -->
+    <string name="modo_de_economia">Modo de Economia</string>
+    <string name="vista_de_percursos">Vista de percursos em página</string>
 
     <!-- MapsActivity -->
     <string name="encerrar_aplicacao">Quer encerrar a aplicação?</string>

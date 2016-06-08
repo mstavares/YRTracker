@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.CheckBox;
 
 public class DefinicoesActivity extends MainActivity {
 
@@ -15,19 +16,22 @@ public class DefinicoesActivity extends MainActivity {
     public static final String TEMPO = "tempo";
     public static final String DISTANCIA = "distancia";
     private Bateria mBateria;
-    private boolean modoEconomia;
+
+    private CheckBox mCheckBoxEconomia, mCheckBoxPagina;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_definicoes);
 
-
-
         mBateria = new Bateria(this);
         mBateria.registaBateria();
 
-        modoEconomia = Bateria.isModoEconomia();
+        mCheckBoxEconomia = (CheckBox) findViewById(R.id.checkbox_modo_economia);
+        mCheckBoxPagina = (CheckBox) findViewById(R.id.checkbox_vista_pagina);
+
+        mCheckBoxEconomia.setChecked(Bateria.isModoEconomia());
+
 
     }
 
@@ -40,6 +44,7 @@ public class DefinicoesActivity extends MainActivity {
 
     @Override
     public void onDestroy() {
+        mBateria.modoEconomia(mCheckBoxEconomia.isChecked());
         mBateria.encerraBateria();
         super.onDestroy();
     }
@@ -54,7 +59,7 @@ public class DefinicoesActivity extends MainActivity {
             mEditor.putInt(DISTANCIA, DISTANCIA_ATUALIZACAO_DEFAULT);
             mEditor.putInt(TEMPO, INTERVALO_ATUALIZACAO_DEFAULT);
         }
-        mEditor.commit();
+        mEditor.apply();
     }
 
 }

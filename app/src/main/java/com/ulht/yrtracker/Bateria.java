@@ -49,7 +49,7 @@ public class Bateria {
         }
     };
 
-    private void modoEconomia (boolean modo) {
+    public void modoEconomia (boolean modo) {
         if(modo) {
             DefinicoesActivity.guardaEconomiaEmCache(mContext, true);
             mFlagEconomia = true;
