@@ -34,13 +34,10 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences mSharedPreferences = getSharedPreferences(Utils.DEFINICOES, MODE_PRIVATE);
                     if(mSharedPreferences.getBoolean(DefinicoesActivity.APRESENTACAO, false)) {
                         startActivity(new Intent(this, ListaDePercursosActivity.class));
-                        finish();
                     } else {
-                        Intent mIntent = new Intent(this, HistoricoActivity.class);
-                        mIntent.putExtra("id", -1);
-                        startActivity(mIntent);
-                        finish();
+                        startActivity(new Intent(this, HistoricoActivity.class).putExtras(new Bundle()));
                     }
+                    finish();
                 } else {
                     Toast.makeText(this, R.string.nao_ha_historico, Toast.LENGTH_LONG).show();
                 }

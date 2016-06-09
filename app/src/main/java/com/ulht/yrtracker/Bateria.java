@@ -69,10 +69,6 @@ public class Bateria {
         mFlagEconomia = false;
     }
 
-    public static boolean isModoEconomia() {
-        return modoEconomia;
-    }
-
     public void encerraBateria() {
         mContext.unregisterReceiver(mBatInfoReceiver);
     }

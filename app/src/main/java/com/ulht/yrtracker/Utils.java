@@ -315,39 +315,4 @@ public class Utils {
         return mMarkerOptions;
     }
 
-    /**
-     * Loading "a carregar dados"
-     */
-
-    public static void aCarregar (final Context mContext) {
-        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
-
-            ProgressDialog dialog;
-
-            @Override
-            protected void onPreExecute() {
-                dialog = new ProgressDialog(mContext);
-                dialog.setMessage(mContext.getResources().getString(R.string.a_carregar_percurso));
-                dialog.setIndeterminate(true);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-            }
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    Thread.sleep(TEMPO_CARREGAR);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void params) {
-                dialog.dismiss();
-            }
-        };
-        task.execute();
-    }
 }

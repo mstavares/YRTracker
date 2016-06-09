@@ -16,6 +16,7 @@ public class DefinicoesActivity extends MainActivity {
     public static final String TEMPO = "tempo";
     public static final String DISTANCIA = "distancia";
     public static final String APRESENTACAO = "apresentacao";
+    public static final String BATERIA = "bateria";
     private Bateria mBateria;
 
     private CheckBox mCheckBoxEconomia, mCheckBoxPagina;
@@ -31,11 +32,7 @@ public class DefinicoesActivity extends MainActivity {
         mCheckBoxEconomia = (CheckBox) findViewById(R.id.checkbox_modo_economia);
         mCheckBoxPagina = (CheckBox) findViewById(R.id.checkbox_vista_pagina);
 
-        mCheckBoxEconomia.setChecked(Bateria.isModoEconomia());
-
         lerDefinicoesEmCache();
-
-
     }
 
     @Override
@@ -62,6 +59,7 @@ public class DefinicoesActivity extends MainActivity {
             mEditor.putInt(DISTANCIA, DISTANCIA_ATUALIZACAO_DEFAULT);
             mEditor.putInt(TEMPO, INTERVALO_ATUALIZACAO_DEFAULT);
         }
+        mEditor.putBoolean(BATERIA, modoEconomia);
         mEditor.apply();
     }
 
@@ -75,6 +73,7 @@ public class DefinicoesActivity extends MainActivity {
     private void lerDefinicoesEmCache() {
         SharedPreferences mSharedPreferences = getSharedPreferences(Utils.DEFINICOES, MODE_PRIVATE);
         mCheckBoxPagina.setChecked(mSharedPreferences.getBoolean(APRESENTACAO, false));
+        mCheckBoxEconomia.setChecked(mSharedPreferences.getBoolean(BATERIA, false));
     }
 
 }

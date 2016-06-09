@@ -1,10 +1,12 @@
 package com.ulht.yrtracker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetalhesPontoActivity extends MainActivity {
 
@@ -38,7 +40,12 @@ public class DetalhesPontoActivity extends MainActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, HistoricoActivity.class));
+        SharedPreferences mSharedPreferences = getSharedPreferences(Utils.DEFINICOES, MODE_PRIVATE);
+        if(mSharedPreferences.getBoolean(DefinicoesActivity.APRESENTACAO, false)) {
+            startActivity(new Intent(this, ListaDePercursosActivity.class));
+        } else {
+            startActivity(new Intent(this, HistoricoActivity.class).putExtras(new Bundle()));
+        }
         finish();
     }
 

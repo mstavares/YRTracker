@@ -317,7 +317,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback, Lo
 
     private boolean verificaSeHaGPS() {
         final LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        return (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER));
+        return (manager.isProviderEnabled(LocationManager.GPS_PROVIDER));
     }
 
     private void buildAlertMessageNoGps() {

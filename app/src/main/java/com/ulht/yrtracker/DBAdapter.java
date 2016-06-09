@@ -121,6 +121,14 @@ public class DBAdapter {
         return db.insert("foto", null, registo);
     }
 
+    public Cursor getPercursos(Integer idPercurso) {
+        if(idPercurso == -1) {
+            return getTodosOsPercursos();
+        } else {
+            return getPercurso(idPercurso);
+        }
+    }
+
     public Cursor getDadosDoPercurso(Integer idPercurso) throws SQLException
     {
         return db.query(

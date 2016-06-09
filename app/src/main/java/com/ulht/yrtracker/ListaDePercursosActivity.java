@@ -7,24 +7,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListaDePercursosActivity extends MainActivity {
 
-    private ListView mListView;
     private ArrayList<Integer> idsDosPercusos = new ArrayList<>();
     private ArrayList<String> descricoesDosPercursos = new ArrayList<>();
     private HashMap<Integer, Integer> posicaoToID = new HashMap<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_de_percursos);
 
-        mListView = (ListView) findViewById(R.id.lista);
+        ListView mListView = (ListView) findViewById(R.id.lista);
 
         Cursor mCursor = MapsActivity.acessoBD().getTodosOsPercursos();
         for(mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
@@ -37,7 +34,7 @@ public class ListaDePercursosActivity extends MainActivity {
         }
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 //R.layout.item,
                 //R.id.item,
@@ -45,14 +42,13 @@ public class ListaDePercursosActivity extends MainActivity {
         );
         mListView.setAdapter(adapter);
 
-
-
-
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle mBundle = new Bundle();
                 Intent mIntent = new Intent(ListaDePercursosActivity.this, HistoricoActivity.class);
-                mIntent.putExtra("id", posicaoToID.get(position));
+                mBundle.putInt("id", posicaoToID.get(position));
+                mIntent.putExtras(mBundle);
                 startActivity(mIntent);
             }
         });
