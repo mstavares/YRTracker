@@ -84,9 +84,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback, Lo
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         if (!PASTA_DE_FOTOS_DA_APLICACAO.exists()) {
-            if(PASTA_DE_FOTOS_DA_APLICACAO.mkdirs()) {
-                Toast.makeText(this, R.string.erro_criar_pasta_aplicacao,Toast.LENGTH_LONG).show();
-            }
+            PASTA_DE_FOTOS_DA_APLICACAO.mkdir();
         }
 
         lerDefinicoesEmCache();
@@ -96,8 +94,6 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback, Lo
 
         bd = new DBAdapter(this);
         bd.open();
-
-
 
     }
 
@@ -121,22 +117,6 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback, Lo
         } else {
             mLocationManager.removeUpdates(this);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Utils.getAlertSimOuNao(this, getString(R.string.encerrar_aplicacao), new Alertar() {
-
-                    @Override
-                    public void metodoPositivo(final DialogInterface dialog, final int id) {
-                        MapsActivity.this.finish();
-                    }
-
-                    @Override
-                    public void metodoNegativo(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
     }
 
     private void startTracking() {
@@ -343,6 +323,22 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback, Lo
         }
         mDistanciaDeAtualizacao = mSharedPreferences.getInt(DefinicoesActivity.DISTANCIA, DefinicoesActivity.DISTANCIA_ATUALIZACAO_DEFAULT);
         mIntervaloDeAtualizacao = mSharedPreferences.getInt(DefinicoesActivity.TEMPO, DefinicoesActivity.INTERVALO_ATUALIZACAO_DEFAULT);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Utils.getAlertSimOuNao(this, getString(R.string.encerrar_aplicacao), new Alertar() {
+
+            @Override
+            public void metodoPositivo(final DialogInterface dialog, final int id) {
+                MapsActivity.this.finish();
+            }
+
+            @Override
+            public void metodoNegativo(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
     }
 
     @Override

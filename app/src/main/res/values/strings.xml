@@ -27,7 +27,7 @@
 
     <!-- ActionBar -->
     <string name="modo_de_economia">Modo de Economia</string>
-    <string name="vista_de_percursos">Vista de percursos em página</string>
+    <string name="vista_de_percursos">Vista de percursos em lista</string>
 
     <!-- MapsActivity -->
     <string name="encerrar_aplicacao">Quer encerrar a aplicação?</string>

@@ -9,6 +9,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,9 +64,12 @@ public class PercursoFragment extends Fragment {
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                Vibrator mVibrator = (Vibrator) getContext().getSystemService(getContext().VIBRATOR_SERVICE);
+                mVibrator.vibrate(100);
                 Utils.getAlertSimOuNao(getContext(), getString(R.string.eliminar_percurso), new Alertar() {
                     @Override
                     public void metodoPositivo(DialogInterface dialog, int id) {
+
                         if(MapsActivity.acessoBD().eliminaPercurso(idPercurso)) {
                             Toast.makeText(getContext(), R.string.percurso_eliminado, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getContext(), MapsActivity.class));

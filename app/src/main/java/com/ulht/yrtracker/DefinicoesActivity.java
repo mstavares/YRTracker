@@ -36,12 +36,6 @@ public class DefinicoesActivity extends MainActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, MapsActivity.class));
-        finish();
-    }
-
-    @Override
     public void onDestroy() {
         mBateria.modoEconomia(mCheckBoxEconomia.isChecked());
         guardaApresentacaoEmCache(mCheckBoxPagina.isChecked());

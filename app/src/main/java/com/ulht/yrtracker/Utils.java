@@ -40,6 +40,7 @@ import java.util.Collections;
 
 public class Utils {
 
+    public static final String LINE_FEED = System.getProperty("line.separator");
     public static final String PASTA_RAIZ_FOTOS = "YRTracker";
     public static final String DEFINICOES = "Definicoes";
     public static final String DIRETORIA_RAIZ = Environment.getExternalStorageDirectory() + File.separator + PASTA_RAIZ_FOTOS;
